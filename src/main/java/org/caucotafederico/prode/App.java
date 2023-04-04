@@ -2,7 +2,6 @@ package org.caucotafederico.prode;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.util.ArrayList;
 import java.util.List;
 import com.opencsv.bean.CsvToBeanBuilder;
 
@@ -32,7 +31,7 @@ public class App
         }
         
         try {
-			listadoResultados = new CsvToBeanBuilder(new FileReader(archivoResultados))
+			listadoResultados = new CsvToBeanBuilder<Resultado>(new FileReader(archivoResultados))
 					.withType(Resultado.class)
 					.build()
 					.parse();
@@ -43,9 +42,8 @@ public class App
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
         try {
-        	listadoPronosticos = new CsvToBeanBuilder(new FileReader(archivoPronostico))
+        	listadoPronosticos = new CsvToBeanBuilder<Pronostico>(new FileReader(archivoPronostico))
 					.withType(Pronostico.class)
 					.build()
 					.parse();
